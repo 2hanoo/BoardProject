@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>스트럿츠2 게시판</title>
-<link rel="stylesheet" href="../css/board.css" type="text/css" />
+<link rel="stylesheet" href="../include/css/board.css" type="text/css" />
 <script type="text/javascript">
 function validation(){
 var frm = document.forms[0];
@@ -36,8 +36,7 @@ return true;
 			<td align="center"><h3>스트럿츠2 게시판</h3></td>
 		</tr>
 	</table>
-	<!-- Board 클래스의 객체 bo가 null이면 submit할때 write.action이 실행되고
-	 아닐경우 modifyAction.action이 실행된다 -->
+	<!-- Board 클래스의 객체 bo가 null이면 submit할때 write.action이 실행되고 아닐경우 modifyAction.action이 실행된다 -->
 	<s:if test="bo==null">
 		<form action="write.action" method="post"
 			onsubmit="return validation()">
@@ -63,9 +62,8 @@ return true;
 			<td width="100" bgcolor="#F4F4F4"><font color="FF0000">*</font>
 				제목</td>
 			<td width="500" bgcolor="#FFFFFF">
-				<!-- 등록 폼 뿐만 아니라 수정 폼에서도 이 폼을 사용 하기 때문에  
-value값을 준다. --> <s:textfield name="title" theme="simple" maxlength="50"
-					value="%{bo.title}" cssStyle="width:370px" />
+				<!-- 등록 폼 뿐만 아니라 수정 폼에서도 이 폼을 사용 하기 때문에  value값을 준다. --> 
+				<s:textfield name="title" theme="simple" maxlength="50"	value="%{bo.title}" cssStyle="width:370px" />
 			</td>
 		</tr>
 		<tr bgcolor="#777777">

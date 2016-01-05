@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>스트럿츠 2 게시판</title>
-<link rel="stylesheet" href="../css/board.css" type="text/css" />
+<link rel="stylesheet" href="../include/css/board.css" type="text/css" />
 </head>
 <body>
 	<br>

@@ -3,19 +3,21 @@
 
 <struts>
 	<package name="board" namespace="/board" extends="struts-default">
+	
+	
 		<!-- 게시판 리스트 액션 -->
 		<action name="list" class="mybatisBoard.action.ListAction">
 			<result name="success">boardList.jsp</result>
 		</action>
+
+		
 		<!-- 게시판 글쓰기 액션 1. 글쓰기 폼 불러오기 -->
 		<action name="writeForm" class="mybatisBoard.action.WriteAction" method="form">
-			<result name="success">writeForm.jsp</result>
+			<result>writeForm.jsp</result>
 		</action>
 		<!-- 게시판 글쓰기 액션 2. 글 쓰기 -->
 		<action name="write" class="mybatisBoard.action.WriteAction">
-			<result name="success" type="redirect-action">
-				<param name="actionName">list</param> 
-				</result>
+			<result type="redirect">list.action</result>
 		</action>
 	</package>
 </struts>

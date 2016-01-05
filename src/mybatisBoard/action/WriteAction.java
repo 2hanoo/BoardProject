@@ -1,55 +1,86 @@
 package mybatisBoard.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 
+import mybatisBoard.bean.Board;
 import mybatisBoard.bean.MyBatisManager;
 
 @SuppressWarnings("serial")
-public class WriteAction extends ActionSupport {
+public class WriteAction extends ActionSupport implements Preparable, ModelDriven<Board> {
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
-	@SuppressWarnings("rawtypes")
-	private String writer;
-	private String title;
-	private String content;
-	private String pwd;
+	private Board bo;
+	private int currentPage;
+	private String keyField;
+	private String keyWord;
+	private int seq;
+	private int seqarg;
+	private int step;
+	private int levels;
 
-	public String form() throws Exception {
+	@Override
+	public Board getModel() {
+		return bo;
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		bo = new Board();
+	}
+
+	public String form() {
 		return SUCCESS;
 	}
 
 	@Override
-	public String execute() throws Exception {
+	public String execute() {
 		SqlSession session = sqlMapper.openSession();
-		Map<String, Object> mp = new HashMap<String, Object>();
-		mp.put("writer", writer);
-		mp.put("title", title);
-		mp.put("content", content);
-		mp.put("pwd", pwd);
-		
-		session.insert("write",mp);
+		// DB에 있는 seq값의 최대값에 +1(다음에 입력될 레코드의 seq 값이랑 같음)을 groups값으로 지정
+		seq = ((Integer) session.selectOne("getMaxSeq")) + 1;
+		step = 0;
+		levels = 0;
+		bo.setGroups(seq);
+		bo.setStep(step);
+		bo.setLevels(levels);
+		session.insert("insertBoard", bo);
+		session.commit();
 		session.close();
 		return SUCCESS;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public int getCurrentPage() {
+		return currentPage;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public String getKeyField() {
+		return keyField;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public String getKeyWord() {
+		return keyWord;
+	}
+
+	public void setKeyField(String keyField) {
+		this.keyField = keyField;
+	}
+
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
+	}
+
+	public int getSeqarg() {
+		return seqarg;
+	}
+
+	public void setSeqarg(int seqarg) {
+		this.seqarg = seqarg;
 	}
 }
