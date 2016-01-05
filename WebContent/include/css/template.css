@@ -1,0 +1,38 @@
+@CHARSET "EUC-KR";
+	/* 공통 부분*/
+	*{margin:0px; padding:0px;}
+	body, td, input, select{font-family: Arial, "Trebuchet MS", sans-serif; font-size:12px; }
+	a {text-decoration:none; color:#000000;}
+	caption{display:none;}
+	img{border:0px;}
+	
+	div#header {
+	    background-color: #954b4b;
+	    color: #000000;
+	    margin: 0px;
+	    text-align: center;
+	    padding: 5px;
+	}
+	
+	div#nav {
+    	display: table-cell;
+    	background-color: #ffd800;
+    	padding: 15px;
+	}
+	
+	div#section{
+    	display: table-cell;
+		background-color: yellow;
+    	padding-left: 15px;
+    	width:100%;
+    	height:300px;
+	}
+	
+	div#footer {
+    	background-color: #954b4b;
+    	color: #efe5d0;
+    	text-align: center;
+    	padding: 10px;
+    	margin: 0px 0px 0px 0px;
+    	font-size: 90%;
+	}
