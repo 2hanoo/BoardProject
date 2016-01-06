@@ -2,6 +2,7 @@ package mybatisBoard.action;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -12,6 +13,7 @@ import mybatisBoard.bean.MyBatisManager;
 
 @SuppressWarnings("serial")
 public class WriteAction extends ActionSupport implements Preparable, ModelDriven<Board> {
+	private Logger logger = Logger.getLogger(ListAction.class);
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
 	private Board bo;
 	private int currentPage;

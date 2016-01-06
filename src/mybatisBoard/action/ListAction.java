@@ -8,10 +8,14 @@ import mybatisBoard.bean.Board;
 import mybatisBoard.bean.MyBatisManager;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class ListAction extends ActionSupport {
+	private Logger logger = Logger.getLogger(ListAction.class);
+	
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
 	@SuppressWarnings("rawtypes")
 	// @SuppressWarnigs("이 안에 제외시킬 경고 속성 정의")

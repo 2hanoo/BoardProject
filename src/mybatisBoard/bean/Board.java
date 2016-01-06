@@ -12,6 +12,8 @@ public class Board {
 	private int step;
 	private int levels;
 	private String regdate;
+	
+	
 	public int getSeq() {
 		return seq;
 	}

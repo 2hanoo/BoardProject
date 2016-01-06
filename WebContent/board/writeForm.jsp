@@ -9,25 +9,25 @@
 <link rel="stylesheet" href="../include/css/board.css" type="text/css" />
 <script type="text/javascript">
 function validation(){
-var frm = document.forms[0];
-if(frm.title.value == ""){
-alert("제목을 입력해주세요.");
-return false;
-}
-if(frm.writer.value == ""){
-alert("이름을 입력해주세요.");
-return false;
-}
-if(frm.pwd.value == ""){
-alert("비밀번호를 입력해주세요.");
-return false;
-}
-if(frm.content.value == ""){
-alert("내용을 입력해주세요.");
-return false;
-}
-return true;
-}
+	var frm = document.forms[0];
+	if(frm.title.value == ""){
+		alert("제목을 입력해주세요.");
+		return false;
+		}
+	if(frm.writer.value == ""){
+		alert("이름을 입력해주세요.");
+		return false;
+		}
+	if(frm.pwd.value == ""){
+		alert("비밀번호를 입력해주세요.");
+		return false;
+		}
+	if(frm.content.value == ""){
+		alert("내용을 입력해주세요.");
+		return false;
+		}
+	return true;
+	}
 </script>
 </head>
 <body>
@@ -38,19 +38,16 @@ return true;
 	</table>
 	<!-- Board 클래스의 객체 bo가 null이면 submit할때 write.action이 실행되고 아닐경우 modifyAction.action이 실행된다 -->
 	<s:if test="bo==null">
-		<form action="write.action" method="post"
-			onsubmit="return validation()">
+		<form action="write.action" method="post" onsubmit="return validation()">
 	</s:if>
 	<s:else>
-		<form action="modifyAction.action" method="post"
-			onsubmit="return validation()">
+		<form action="modifyAction.action" method="post" onsubmit="return validation()">
 			<s:hidden name="currentPage" value="%{currentPage}" />
 			<s:hidden name="seqarg" value="%{seqarg}" />
 			<s:hidden name="keyField" value="%{keyField}" />
 			<s:hidden name="keyWord" value="%{keyWord}" />
 	</s:else>
-	<table width="600" border="0" cellspacing="0" cellpadding="0"
-		align="left">
+	<table width="600" border="0" cellspacing="0" cellpadding="0" align="left">
 		<tr>
 			<td align="right" colspan="2"><font color="#FF0000">*</font>는 필수
 				입력사항입니다.</td>
@@ -102,9 +99,9 @@ return true;
 			<td height="10" colspan="2"></td>
 		</tr>
 		<tr>
-			<td align="right" colspan="2"><input name="submit "
-				type="submit" value="작성완료"> <input name="list" type="button"
-				value="목록"
+			<td align="right" colspan="2">
+			<input name="submit" type="submit" value="작성완료"> 
+			<input name="list" type="button"value="목록"
 				onclick="javascript:location.href='list.action?currentPage=<s:property 
 value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
 			</td>

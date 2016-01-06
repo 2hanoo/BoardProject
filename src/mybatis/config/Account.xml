@@ -39,9 +39,39 @@ order by groups desc, step asc) tem) where rnum between #{startRow} and #{endRow
 
 <!-- 글쓰기 -->
 <insert id="insertBoard" parameterType ="bo">
-	insert into board value(boardseq.nextval, #{writer), #{title}, #{content}, #{pwd}
-							, 0, #{groups}, #{step}, #{levels}, sysdate) 
+	insert into BOARD values(boardseq.nextval, #{writer}, #{title}, #{content}, #{pwd}, 0, #{groups}, #{step}, #{levels}, sysdate) 
 </insert>
 
+<!-- 조회수 증가 -->
+<update id="updateHit" parameterType = "int">
+	update board SET hit = hit + 1 where seq = #{seqarg}
+</update>
 
+<!-- 글 읽기 -->
+<select id="detailBoard" resultType="bo" parameterType="int">
+select * from BOARD where seq = #{seqarg} 
+</select>
+
+
+<!--     
+    게시물 수정
+	<update id="update" parameterType="board" >
+	    /* Board - update */
+	    update board set title = #{title}, content = #{content}, passwd = #{passwd} where num = #{num}
+	</update>
+
+	게시물 삭제
+	<delete id="delete" parameterType="board" >
+	    /* Board - delete */
+	    delete from board where num = #{num}
+	</delete>
+
+	비밀번호 체크	    
+	<select id="pwdCheck" parameterType="board" resultType="int">
+	    select NVL((SELECT 1 from board where num = #{num} AND passwd = #{passwd}),0) 
+	    as result From dual
+	</select>
+	 -->
+	 
 </mapper>	
+
