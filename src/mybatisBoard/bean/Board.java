@@ -74,6 +74,12 @@ public class Board {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	@Override
+	public String toString() {
+		return "Board [seq=" + seq + ", writer=" + writer + ", title=" + title + ", content=" + content + ", pwd=" + pwd
+				+ ", hit=" + hit + ", groups=" + groups + ", step=" + step + ", levels=" + levels + ", regdate="
+				+ regdate + "]";
+	}
 
 
 }

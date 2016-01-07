@@ -42,6 +42,7 @@ public class WriteAction extends ActionSupport implements Preparable, ModelDrive
 	public String execute() {
 		SqlSession session = sqlMapper.openSession();
 		// DB에 있는 seq값의 최대값에 +1(다음에 입력될 레코드의 seq 값이랑 같음)을 groups값으로 지정
+		logger.info(bo);
 		seq = ((Integer) session.selectOne("getMaxSeq")) + 1;
 		step = 0;
 		levels = 0;

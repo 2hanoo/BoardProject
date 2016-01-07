@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 import mybatisBoard.bean.Board;
 import mybatisBoard.bean.MyBatisManager;
 
-public class DetailAction extends ActionSupport implements Preparable, ModelDriven<Board>
+public class DetailAction extends ActionSupport 
 {
 	private Logger logger = Logger.getLogger(ListAction.class);
 	
@@ -24,6 +24,7 @@ public class DetailAction extends ActionSupport implements Preparable, ModelDriv
 	private int currentPage; // 현재 페이지
 	private int seqarg; // 클릭한 게시글 번호
 
+	
 	//패스워드 체크폼
 	public String checkForm()
 	{
@@ -33,18 +34,6 @@ public class DetailAction extends ActionSupport implements Preparable, ModelDriv
 	public String form() 
 	{
 		return SUCCESS;
-	}
-	
-	@Override
-	public Board getModel() 
-	{
-		return bo;
-	}
-	
-	@Override
-	public void prepare() throws Exception 
-	{
-		bo = new Board();
 	}
 	
 	//패스워드 체크 액션
@@ -60,9 +49,9 @@ public class DetailAction extends ActionSupport implements Preparable, ModelDriv
 		
 	}
 	//수정폼에서 상세보기
-	public String modifyForm(){
+	public String updateForm(){
 		SqlSession session = sqlMapper.openSession();
-		bo = (Board) session.selectOne("getBoard", seqarg);
+		bo = (Board) session.selectOne("detailBoard", seqarg);
 		session.commit();
 		session.close();
 		return SUCCESS;
@@ -71,10 +60,11 @@ public class DetailAction extends ActionSupport implements Preparable, ModelDriv
 	@Override
 	public String execute() throws Exception 
 	{
-		SqlSession session = sqlMapper.openSession(true);
+		SqlSession session = sqlMapper.openSession();
 		session.update("updateHit",seqarg);
 		session.commit();
-		session.selectOne("detailBoard",seqarg);
+		bo = (Board)session.selectOne("detailBoard",seqarg);
+		System.out.println(bo.toString());
 		session.close();
 		return SUCCESS;
 	}
@@ -108,5 +98,9 @@ public class DetailAction extends ActionSupport implements Preparable, ModelDriv
 	}
 	public void setSeqarg(int seqarg) {
 		this.seqarg = seqarg;
+	}
+	//bo 에 읽어온 값을 가져오기
+	public Board getBo() {   
+		return bo;
 	}
 }

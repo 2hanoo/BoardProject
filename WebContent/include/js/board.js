@@ -1,7 +1,8 @@
-/* chkSubmit(ìœ íš¨ì„± ì²´í¬ ëŒ€ìƒ, ë©”ì‹œì§€ ë‚´ìš©) */
+
+/* chkSubmit(À¯È¿¼º Ã¼Å© ´ë»ó, ¸Ş½ÃÁö ³»¿ë) */
 function chkSubmit(v_item, v_name){
 	if(v_item.val().replace(/\s/g,"")=="") {
-		alert(v_name+" ì…ë ¥í•´ ì£¼ì„¸ìš”.");
+		alert(v_name+" ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
 		v_item.val("");
 		v_item.focus();
 		return false;

@@ -27,7 +27,7 @@
 			<td height="1" colspan="5"></td>
 		</tr>
 		<s:iterator value="list" status="stat">
-			<s:url id="viewURL" action="view">
+			<s:url id="viewURL" action="detail">
 				<s:param name="seqarg">
 					<s:property value="seq" />
 				</s:param>
