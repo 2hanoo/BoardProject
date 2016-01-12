@@ -3,26 +3,27 @@
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="mybatis/config/db.properties"/>
-<typeAliases>
-<typeAlias alias="bo" type="mybatisBoard.bean.Board"/>
-</typeAliases>
+	<properties resource="mybatis/config/db.properties" />
+	<typeAliases>
+		<typeAlias alias="bo" type="mybatis.bean.Board" />
+		<typeAlias alias="user" type="mybatis.bean.User" />
+	</typeAliases>
 	<environments default="development">
 		<environment id="development">
-		<transactionManager type="JDBC"/>
-		<dataSource type="POOLED">
-<!-- db.properties의 driver -->
-			<property name="driver" value="${driver}"/> 
-<!-- db.properties의 url -->
-			<property name="url" value="${url}"/> 
-<!-- db.properties의 username -->
-			<property name="username" value="${username}"/> 
-<!-- db.properties의 password -->
-			<property name="password" value="${password}"/> 
-		</dataSource>
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- db.properties의 driver -->
+				<property name="driver" value="${driver}" />
+				<!-- db.properties의 url -->
+				<property name="url" value="${url}" />
+				<!-- db.properties의 username -->
+				<property name="username" value="${username}" />
+				<!-- db.properties의 password -->
+				<property name="password" value="${password}" />
+			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mybatis/config/Account.xml"/>
+		<mapper resource="mybatis/config/Account.xml" />
 	</mappers>
 </configuration>

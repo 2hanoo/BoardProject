@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import mybatisBoard.bean.MyBatisManager;
+import mybatis.bean.MyBatisManager;
 
 public class DeleteAction extends ActionSupport {
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();

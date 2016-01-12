@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" namespace="/user" extends="struts-default">
+<!-- 로그인 액션 -->
+	<action name="userLogin" class="mybatisUser.action.LoginAction">
+		<result>logoutForm.jsp</result>
+	</action>
+<!-- 로그아웃 액션 -->
+	<action name="userLogout" class="mybatisUser.action.LogoutAction">
+		<result type="redirect">loginForm.jsp</result>
+	</action>
+<!-- 회원가입 액션 1. 회원가입 폼 불러오기 -->
+	<action name="joinForm" class="mybatisUser.action.JoinAction" method="form">
+		<result>joinForm.jsp</result>
+	</action>
+<!-- 회원가입 액션 2. 회원가입 액션-->
+	<action name="userJoin" class="mybatisUser.action.JoinAction">
+		<result name="error">joinError.jsp</result>
+		<result>joinSuccess.jsp</result>
+	</action>
+	</package>
+</struts>

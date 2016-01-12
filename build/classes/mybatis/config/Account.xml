@@ -32,18 +32,14 @@
 		and #{endRow}
 	</select>
 
-
-	<!-- seq 최대값 -->
-	<select id="getMaxSeq" resultType="int">
-		select max(seq) from BOARD
-	</select>
-
 	<!-- 글쓰기 -->
 	<insert id="insertBoard" parameterType="bo">
+		<selectKey keyProperty="seq1" resultType="int" order="BEFORE">
+			select boardseq.nextval from dual
+		</selectKey>
 		insert into BOARD
-		values(boardseq.nextval, #{writer}, #{title}, #{content},
-		#{pwd}, 0,
-		#{groups}, #{step}, #{levels}, sysdate)
+		values(#{seq}, #{writer}, #{title}, #{content},
+		#{pwd}, 0, #{seq}, 0, 0, sysdate)
 	</insert>
 
 	<!-- 조회수 증가 -->
@@ -72,10 +68,45 @@
 		#{seqarg}
 	</delete>
 
-	<!-- 답글 등록 -->
+	<!-- 답글 쓰기 -->
+	<insert id="reply" parameterType="bo">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			Select
+			boardseq.nextval from dual
+		</selectKey>
+		Insert into BOARD
+		values(#{seq}, #{writer}, #{title}, #{content},
+		#{pwd}, 0, #{groups}, #{step}, #{levels}, sysdate)
+	</insert>
+
+	<!-- 답글 step 증가 -->
 	<update id="updateStep" parameterType="map">
-		update BOARD set step = step+1 where groups = #{groups} and step > #{step}
+		update BOARD set step =
+		step+1
+		where groups = #{groups} and step > #{step}
 	</update>
 
+
+	<!-- 유저 로그인/로그아웃/회원가입 SQL -->
+	<!-- 로그인. 패스워드 체크 -->
+	<select id="pwdCheck" parameterType="map" resultType="user">
+		select pw
+		from USER_INFO where id = #{id}
+	</select>
+
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from USER_INFO where id=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="user">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select
+			userseq.nextval from dual
+		</selectKey>
+		insert into USER_INFO (no, id, pw, writer)
+		values (#{no}, #{id}, #{pw}, #{writer})
+	</insert>
 </mapper>	
 

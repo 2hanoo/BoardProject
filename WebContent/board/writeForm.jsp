@@ -31,7 +31,7 @@ function validation(){
 </script>
 </head>
 <body>
-	<table width="600" border="0" cellspacing="0" cellpadding="2">
+	<table width="800px" align="center" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h3>스트럿츠2 게시판</h3></td>
 		</tr>
@@ -47,7 +47,7 @@ function validation(){
 			<s:hidden name="keyField" value="%{keyField}" />
 			<s:hidden name="keyWord" value="%{keyWord}" />
 	</s:else>
-	<table width="600" border="0" cellspacing="0" cellpadding="0" align="left">
+	<table width="800px" border="0" cellspacing="0" cellpadding="0" align="center">
 		<tr>
 			<td align="right" colspan="2"><font color="#FF0000">*</font>는 필수
 				입력사항입니다.</td>
@@ -60,7 +60,7 @@ function validation(){
 				제목</td>
 			<td width="500" bgcolor="#FFFFFF">
 				<!-- 등록 폼 뿐만 아니라 수정 폼에서도 이 폼을 사용 하기 때문에  value값을 준다. --> 
-				<s:textfield name="title" theme="simple" maxlength="50"	value="%{bo.title}" cssStyle="width:370px" />
+				<s:textfield name="title" theme="simple" maxlength="50"	value="%{bo.title}" cssStyle="width:95%;" />
 			</td>
 		</tr>
 		<tr bgcolor="#777777">
@@ -71,7 +71,7 @@ function validation(){
 				이름</td>
 			<td width="500" bgcolor="#FFFFFF"><s:textfield name="writer"
 					theme="simple" maxlength="20" value="%{bo.writer}"
-					cssStyle="width:100px" /></td>
+					cssStyle="width:95%" /></td>
 		</tr>
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2"></td>
@@ -81,7 +81,7 @@ function validation(){
 				비밀번호</td>
 			<td width="500" bgcolor="#FFFFFF"><s:password name="pwd"
 					theme="simple" maxlength="20" value="%{bo.pwd}"
-					cssStyle="width:100px" /></td>
+					cssStyle="width:95%" /></td>
 		</tr>
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2"></td>
@@ -90,7 +90,7 @@ function validation(){
 			<td width="100" bgcolor="#F4F4F4"><font color="FF0000">*</font>
 				내용</td>
 			<td width="500" bgcolor="#FFFFFF"><s:textarea name="content"
-					theme="simple" value="%{bo.content}" cols="50" rows="10" /></td>
+					theme="simple" value="%{bo.content}" cols="110" rows="10" /></td>
 		</tr>
 		<tr bgcolor="#777777">
 			<td height="1" colspan="2"></td>
@@ -100,10 +100,8 @@ function validation(){
 		</tr>
 		<tr>
 			<td align="right" colspan="2">
-			<input name="submit" type="submit" value="작성완료"> 
-			<input name="list" type="button"value="목록"
-				onclick="javascript:location.href='list.action?currentPage=<s:property 
-value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
+			<button style="border: 0; background-color: #ffffff; padding:inherit;"><img src="../include/image/re_write.gif"></button> 
+			<a href="javascript:location.href='list.action?currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'"><img src="../include/image/list.gif"></a>
 			</td>
 		</tr>
 	</table>

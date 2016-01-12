@@ -8,12 +8,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-import mybatisBoard.bean.Board;
-import mybatisBoard.bean.MyBatisManager;
+import mybatis.bean.Board;
+import mybatis.bean.MyBatisManager;
 
 public class DetailAction extends ActionSupport 
 {
-	private Logger logger = Logger.getLogger(ListAction.class);
+	private Logger logger = Logger.getLogger(DetailAction.class);
 	
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
 	
@@ -64,7 +64,7 @@ public class DetailAction extends ActionSupport
 		session.update("updateHit",seqarg);
 		session.commit();
 		bo = (Board)session.selectOne("detailBoard",seqarg);
-		System.out.println(bo.toString());
+		logger.info(bo.toString());
 		session.close();
 		return SUCCESS;
 	}

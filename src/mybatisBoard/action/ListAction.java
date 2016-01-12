@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import mybatisBoard.bean.Board;
-import mybatisBoard.bean.MyBatisManager;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import mybatis.bean.Board;
+import mybatis.bean.MyBatisManager;
 
 @SuppressWarnings("serial")
 public class ListAction extends ActionSupport {
@@ -28,8 +30,8 @@ public class ListAction extends ActionSupport {
 	private String pagingHtml;
 	private int currentPage = 1; // 현재 페이지
 	private int totalCount;
-	private int blockCount = 5; // 한 페이지의 게시물 수
-	private int blockPage = 3; // 한 화면에 보여줄 페이지 수
+	private int blockCount = 10; // 한 페이지의 게시물 수
+	private int blockPage = 5; // 한 화면에 보여줄 페이지 수
 
 	@Override
 	public String execute() {
@@ -46,11 +48,14 @@ public class ListAction extends ActionSupport {
 		if (endRow > totalCount) {
 			endRow = totalCount;
 		}
+		logger.info("List 1: keyfield, keyWord = "+mp);
 		mp.put("startRow", startRow);
 		mp.put("endRow", endRow);
 		// 현재 페이지의 게시물 수만큼 게시물 리시트를 가져온다
 		list = session.selectList("listBoard", mp);
+		logger.info("List 2: map에 담긴 value = "+mp);
 		session.close();
+		logger.info("List 3: list에 담긴 값 = "+list);
 		return SUCCESS;
 	}
 

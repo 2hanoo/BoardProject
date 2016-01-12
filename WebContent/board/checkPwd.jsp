@@ -11,8 +11,7 @@
 <body>
 	<center>
 		<h2>비밀번호 확인</h2>
-		<!-- 비밀번호를 입력했을 때 일치하면 checkSuccess.jsp 페이지로
-일치하지 않다면 checkError.jsp 페이지로 이동한다  -->
+		<!-- 비밀번호를 입력했을 때 일치하면 checkSuccess.jsp 페이지로 일치하지 않다면 checkError.jsp 페이지로 이동한다  -->
 		<form action="pwdCheck" method="post">
 			<s:hidden name="seqarg" value="%{seqarg}" />
 			<s:hidden name="currentPage" value="%{currentPage}" />

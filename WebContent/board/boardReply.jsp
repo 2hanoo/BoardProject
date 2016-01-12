@@ -22,7 +22,7 @@
 			alert("비밀번호를 입력해주세요.");
 			return false;
 		}
-		if (frm.content.value == "") {
+		if (frm.content.value == "") {	
 			alert("내용을 입력해주세요.");
 			return false;
 		}
@@ -90,11 +90,9 @@
 			<td height="10" colspan="2"></td>
 		</tr>
 		<tr>
-			<td align="right" colspan="2"><input name="submit "
-				type="submit" value="작성완료"> <input name="list" type="button"
-				value="목록"
-				onclick="javascript:location.href='list.action?currentPage=<s:property value="currentPage"/>
-				&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
+			<td align="right" colspan="2"><button style="border: 0; background-color: #ffffff; padding:inherit;"><img src="../include/image/re_write.gif"></button> 
+				<a href="javascript:location.href='list.action?currentPage=<s:property 
+				value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'"><img src="../include/image/list.gif"></a>
 			</td>
 		</tr>
 	</table>

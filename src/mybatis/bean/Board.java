@@ -1,4 +1,4 @@
-package mybatisBoard.bean;
+package mybatis.bean;
 
 public class Board {
 	
@@ -12,7 +12,6 @@ public class Board {
 	private int step;
 	private int levels;
 	private String regdate;
-	
 	
 	public int getSeq() {
 		return seq;
@@ -76,10 +75,9 @@ public class Board {
 	}
 	@Override
 	public String toString() {
-		return "Board [seq=" + seq + ", writer=" + writer + ", title=" + title + ", content=" + content + ", pwd=" + pwd
-				+ ", hit=" + hit + ", groups=" + groups + ", step=" + step + ", levels=" + levels + ", regdate="
-				+ regdate + "]";
+		return "Board [seq=" + seq + ", writer=" + writer + ", title=" + title
+				+ ", content=" + content + ", pwd=" + pwd + ", hit=" + hit 
+				+ ", groups=" + groups + ", step=" + step + ", levels=" + levels 
+				+ ", regdate=" + regdate + "]";
 	}
-
-
 }

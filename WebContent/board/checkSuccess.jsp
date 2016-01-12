@@ -11,10 +11,12 @@
 <script type="text/javascript">
 	function locationURL() {
 		if (window.name == 'modify') {
-			window.opener.parent.location.href = 'updateForm.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>';
+			window.opener.parent.location.href = 'updateForm.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property 
+					value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>';
 		} else if (window.name == 'delete') {
 			alert("삭제되었습니다.");
-			window.opener.parent.location.href = 'delete.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>';
+			window.opener.parent.location.href = 'delete.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property 
+					value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>';
 		}
 		window.close();
 	}

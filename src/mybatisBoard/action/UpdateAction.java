@@ -7,16 +7,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-import mybatisBoard.bean.Board;
-import mybatisBoard.bean.MyBatisManager;
+import mybatis.bean.Board;
+import mybatis.bean.MyBatisManager;
 
 public class UpdateAction extends ActionSupport implements Preparable, ModelDriven<Board> {
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
 	private Board bo;
-	private int seqarg;
-	private int currentPage;
-	private String keyField;
-	private String keyWord;
+	private int seqarg; 		//수정하는 게시물의 글 번호
+	private int currentPage; 	// 수정 하는 게시물의 원래 리스트 페이지 번호
+	private String keyField;	// 수정 하는 게시물의 검색 키워드 필드
+	private String keyWord;		// 수정하는 게시물의 검색 키워드 
 
 	@Override
 	public String execute() {
@@ -26,7 +26,6 @@ public class UpdateAction extends ActionSupport implements Preparable, ModelDriv
 		session.commit();
 		session.close();
 		return SUCCESS;
-
 	}
 
 	@Override

@@ -23,7 +23,7 @@ totalPage = (int)Math.ceil((double)totalCount/blockCount);
 if(totalPage == 0){ //게시물이 하나도 없는 경우 전체 페이지 수를 1로 지정
 totalPage = 1;
 }
-if(currentPage > totalPage){ 
+if(currentPage > totalPage){ //현재 페이지가 전체 페이지 보다 많을 경우  현재페이지는 = 전체 페이지와 같다. 
 currentPage = totalPage;
 }
 startCount = (currentPage-1)*blockCount+1;

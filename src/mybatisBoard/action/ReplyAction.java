@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
-import mybatisBoard.bean.Board;
-import mybatisBoard.bean.MyBatisManager;
+import mybatis.bean.Board;
+import mybatis.bean.MyBatisManager;
 
 public class ReplyAction implements Preparable, ModelDriven<Board> {
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
@@ -44,7 +44,7 @@ public class ReplyAction implements Preparable, ModelDriven<Board> {
 		// 답변은 답변이 달리는 글 밑에 있어야 되므로 답변이 달리는 글의 step값에 +1을 해준다
 		bo.setStep(step + 1);
 		bo.setLevels(levels);
-		session.insert("insertBoard", bo);
+		session.insert("reply", bo);
 		session.commit();
 		session.close();
 		return "success";

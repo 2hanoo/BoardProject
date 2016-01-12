@@ -10,46 +10,18 @@
 <script type="text/javascript" src="../include/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../include/js/board.js"></script>
 <script type="text/javascript">
-	
-// 	$(function(){
-// 		$("#pwdChk").hide();
-// 		/* 목록 버튼 클릭 시 처리 이벤트 */
-// 		$("#boardList").click(function(){
-// 			location.href='list.action?currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'
-// 		});
-		
-// 		/* 답변 버튼 클릭 시 처리 이벤트 */
-// 		$("#replyBoard").click(function(){
-// 			location.href='reply.action?currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'
-// 		});
-
-// 		/*수정 버튼 클릭 시 처리 이벤트 */
-// 		$("#updateBoard").click(function(){
-// 			$("#pwdChk").show();
-// 			$("#msg").text("작성 시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
-// 			butChk = 1;
-// 		});
-		
-// 		/*삭제 버튼 클릭 시 처리 이벤트 */
-// 		$("#deleteBoard").click(function(){
-// 			$("#pwdChk").show();
-// 			$("#msg").text("작성 시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
-// 			butChk=2;
-// 		});
-		
-// 		/*비밀번호 확인 버튼 클릭 시 처리 이벤트 */
-// 		$("#pwdBut").click(function(){
-// 			pwdConfirm();	
-// 		});
-// 	});
 function open_win_noresizable(url, name){
 	var oWin = window.open(url, name, "scrollbars=no, status=yes, width=300, height=150");
 }
-
 </script>
 </head>
 <body>
-	<table border="1" align="center">
+	<table width="800px" align="center" border="0" cellspacing="0" cellpadding="2">
+		<tr>
+			<td align="center"><h3>스트럿츠2 게시판</h3></td>
+		</tr>
+	</table>
+	<table width="800px" align="center" border="0" cellspacing="0" cellpadding="2">
 	<colgroup>
 		<col width = "80"/>
 		<col width = "100"/>
@@ -58,50 +30,39 @@ function open_win_noresizable(url, name){
 		<col width = "80"/>
 		<col width = "100"/>
 	</colgroup>
+	<tr bgcolor="#777777">
+			<td height="1" colspan="6"></td>
+		</tr>
 		<tr align="center">
-			<td align="center">글 제목</td>
+			<td align="center" bgcolor="#AAAAAA">글 제목</td>
 			<td colspan="5"><s:property value="bo.title" /></td>
 		</tr>
+		<tr bgcolor="#777777">
+			<td height="1" colspan="6"></td>
+		</tr>
 		<tr align="center">
-			<td align="center">작성자</td>
+			<td align="center" bgcolor="#AAAAAA">작성자</td>
 			<td><s:property value="bo.writer" /></td>
-			<td align="center">글 작성일</td>
+			<td align="center" bgcolor="#AAAAAA">글 작성일</td>
 			<td><s:property value="bo.regdate" /></td>
-			<td align="center">조회수</td>
+			<td align="center" bgcolor="#AAAAAA">조회수</td>
 			<td><s:property value="bo.hit" /></td>
 		</tr>
+		<tr bgcolor="#777777">
+			<td height="1" colspan="6"></td>
+		</tr>
 		<tr>
-			<td align="center">글 내용 </td>
-			<td colspan="5"><textarea rows="10" cols="75" readonly="readonly"><s:property value="bo.content" /></textarea></td>
+			<td align="center" bgcolor="#AAAAAA">글 내용 </td>
+			<td colspan="5" height="299px"><s:property value="bo.content" /></td>
 		</tr>
-	</table>
-	<table align="center">
-	<%-- 
-		<tr align="left">
-			<td id="btd1">
-				<div id="pwdChk">
-					<form id="f_pwd">
-						<s:hidden name="seqarg" value="%{seqarg}"/>
-						<s:hidden name="currentPage" value="%{currentPage}"/>
-						<s:hidden name="keyField" value="%{keyField}"/>
-						<s:hidden name="keyWord" value="%{keyWord}"/>
-						<label for="pwdarg" id="l_pwd">비밀번호 : </label>
-						<input type="password" name="pwdarg" id="pwdarg" />
-						<input type="button" id="pwdBut" value="확인" />
-						<span id="msg"></span>
-					</form>
-				</div>
-			</td>
+		<tr bgcolor="#777777">
+			<td height="1" colspan="6"></td>
 		</tr>
-		 --%>
+		<tr>
+			<td height="10" colspan="6"></td>
+		</tr>
 		<tr align="right">
-			<td width="550">
-			<!-- 
-				<input type="button" value="답글쓰기" id="replyBoard" /> 
-				<input type="button" value="목록보기" id="boardList" />
-				<input type="button" value="수정하기" id="updateBoard" /> 
-				<input type="button" value="삭제하기" id="deleteBoard" /> 
-			 -->
+			<td width="550" colspan="6">
 			 <s:url id="modifyURL" action="update">
 				<s:param name="seq">
 				<s:property value="seqarg"/>
@@ -112,10 +73,14 @@ function open_win_noresizable(url, name){
 	  			<s:property value="seqarg"/>
 	 			</s:param>
 			</s:url>
-				<input name="list" type="button" value="답글" onclick="javascript:location.href='replyForm.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
-				<input name="list" type="button" value="수정" onclick="javascript:open_win_noresizable('checkForm.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>', 'modify')">
-				<input name="list" type="button" value="삭제" onclick="javascript:open_win_noresizable('checkForm.action?seqarg=<s:property value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property  value="keyField"/>&keyWord=<s:property value="keyWord"/>', 'delete')">
-				<input name="list" type="button" value="목록" onclick="javascript:location.href='list.action?currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
+				<a href="javascript:location.href='replyForm.action?seqarg=<s:property 
+				value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'"><img src="../include/image/re_write.gif"></a>
+				<a href="javascript:open_win_noresizable('checkForm.action?seqarg=<s:property 
+				value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>', 'modify')"><img src="../include/image/modify.gif"></a>
+				<a href="javascript:open_win_noresizable('checkForm.action?seqarg=<s:property 
+				value="seqarg"/>&currentPage=<s:property value="currentPage"/>&keyField=<s:property  value="keyField"/>&keyWord=<s:property value="keyWord"/>', 'delete')"><img src="../include/image/delete.gif"></a>
+				<a href="javascript:location.href='list.action?currentPage=<s:property 
+				value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'"><img src="../include/image/list.gif"></a>
 			</td>
 		</tr>
 	</table>

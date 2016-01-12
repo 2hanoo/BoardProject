@@ -10,12 +10,12 @@
 </head>
 <body>
 	<br>
-	<table width="100%" border="0" cellspacing="0" cellpadding="2">
+	<table width="800px" align="center" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<td align="center"><h3>스트럿츠2 게시판</h3></td>
 		</tr>
 	</table>
-	<table width="100%" border="0" cellspacing="0" cellpadding="2">
+	<table width="800px" align="center" border="0" cellspacing="0" cellpadding="2">
 		<tr align="center" bgcolor="#F3F3F3">
 			<td width="50"><strong>번호</strong></td>
 			<td><strong>제목</strong></td>
@@ -43,9 +43,9 @@
 			</s:url>
 			<tr bgcolor="#FFFFFF" align="center">
 				<td><s:property value="seq" /></td>
-				<td align="left">&nbsp; <img alt="" src="level.gif"
+				<td align="left">&nbsp; <img alt="" src="../include/image/level.gif"
 					width='${levels*10}' height="10"> <s:if test="levels>0">
-						<img alt="" src="re.gif" height="10">
+						<img alt="" src="../include/image/re.gif" height="10">
 					</s:if> <s:a href="%{viewURL}">
 						<s:property value="title" />
 					</s:a>
@@ -70,9 +70,8 @@
 			</td>
 		</tr>
 		<tr align="right">
-			<td colspan="5"><input type="button" value="글쓰기"
-				onclick="javascript:location.href='writeForm.action?currentPage=<s:property 
-				value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'">
+			<td colspan="5"><a href="javascript:location.href='writeForm.action?currentPage=<s:property 
+				value="currentPage"/>&keyField=<s:property value="keyField"/>&keyWord=<s:property value="keyWord"/>'"><img src="../include/image/write.gif"></a>
 			</td>
 		</tr>
 	</table>
@@ -82,8 +81,7 @@
 				<option value="writer">글쓴이
 				<option value="title">제목
 				<option value="content">내용
-			</select> <input type="text" name="keyWord"><input type="submit"
-				value="검색">
+			</select> <input type="text" name="keyWord">&nbsp;<button style="border: 0; background-color: #ffffff; padding: inherit;"><img src="../include/image/find.gif"></button>
 		</form>
 	</center>
 </body>
