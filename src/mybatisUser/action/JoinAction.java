@@ -14,8 +14,6 @@ public class JoinAction extends ActionSupport {
 	private Logger logger = Logger.getLogger(JoinAction.class);
 	public static SqlSessionFactory sqlMapper = MyBatisManager.getSqlSession();
 	
-	private User user;
-	
 	private String id;
 	private String pw;
 	private String writer;
@@ -29,35 +27,29 @@ public class JoinAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		SqlSession session = sqlMapper.openSession();
-		int idCheck = session.selectOne("idCheck",id);
-		if(idCheck==0){
+		int idCheck = session.selectOne("idCheck",id);   
+		// idCheck SQL = 입력된 아이디 값이 조회가 될 경우 1 호출. 
+		if(idCheck==0){ //아이디 조회가 안될 경우 
+			User user = new User();
 			user.setId(id);
 			user.setPw(pw);
 			user.setWriter(writer);
-			
+			session.insert("join", user);
 			logger.info("SQL 실행");
 			session.commit();
-			logger.info("커밋성공");
+			logger.info("커밋 성공");
 			session.close();
 			logger.info("세션 종료");
 			return SUCCESS;
 		}
-		else{
+		else{ //아이디 조회가 될 경우
 			msg="중복된 아이디가 존재합니다.";
 			return ERROR;
 		}
 	}
 
-	public String getId() {
-		return id;
-	}
-
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getPw() {
-		return pw;
 	}
 
 	public void setPw(String pw) {
@@ -74,9 +66,5 @@ public class JoinAction extends ActionSupport {
 
 	public String getMsg() {
 		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
 	}
 }

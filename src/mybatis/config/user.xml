@@ -18,7 +18,7 @@
 	</action>
 <!-- 회원가입 액션 2. 회원가입 액션-->
 	<action name="userJoin" class="mybatisUser.action.JoinAction">
-		<result name="error">joinError.jsp</result>
+		<result name="error">joinForm.jsp</result>
 		<result>joinSuccess.jsp</result>
 	</action>
 	</package>
